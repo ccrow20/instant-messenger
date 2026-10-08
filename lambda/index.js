@@ -1,20 +1,9 @@
-/*
-    AWS Lambda Handler
-    Cloud Computing Final Project - Group 9 (Miraaj, Connor, Kaushik, Emma, Michael)
-    Project - Instant Messaging Service
-    File Created By - Emma Crowe
-
-This manages user connections ($connect, $disconnect) and stores the messages and connection data in the CCGroup9Table, then generates secure S3 pre-signed URLs to allow users to upload images and videos.
-
-All sources of help come from the AWS Documentation!
-*/
-
 const AWS = require("aws-sdk");
 const ddb = new AWS.DynamoDB.DocumentClient();
 
 const TABLE_NAME = "CCGroup9Table";
 const s3 = new AWS.S3();
-const S3_BUCKET = "cc-group9-chat-media"; // has to be created when using
+const S3_BUCKET = "cc-group9-chat-media";
 
 
 exports.handler = async (event) => {
@@ -46,7 +35,7 @@ exports.handler = async (event) => {
 };
 
 
-// $connect — store connection in CCGroup9Table
+// $connect — store connection
 async function handleConnect(event) {
     const connectionId = event.requestContext.connectionId;
     const userId = event.requestContext.authorizer?.claims?.sub || "UnknownUser";
