@@ -1,9 +1,9 @@
 const AWS = require("aws-sdk");
 const ddb = new AWS.DynamoDB.DocumentClient();
 
-const TABLE_NAME = "CCGroup9Table";
+const TABLE_NAME = "CCTable";
 const s3 = new AWS.S3();
-const S3_BUCKET = "cc-group9-chat-media";
+const S3_BUCKET = "cc-chat-media";
 
 
 exports.handler = async (event) => {
